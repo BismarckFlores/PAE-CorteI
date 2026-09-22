@@ -1,7 +1,7 @@
 package ni.edu.uam.paecortei.controller;
 
-import ni.edu.uam.paecortei.model.Datos;
-import ni.edu.uam.paecortei.model.Empleado;
+import ni.edu.uam.paecortei.dao.EmployeeDaoImpl;
+import ni.edu.uam.paecortei.models.Employee;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -56,8 +56,8 @@ public class FormularioController {
             return;
         }
 
-        // Todo valido: se guarda en la lista compartida
-        Datos.LISTA_EMPLEADOS.add(new Empleado(nombres, apellidos, cargo, salario));
+        // Todo valido: se guarda en la lista compartida a través del DAO
+        EmployeeDaoImpl.getInstance().save(new Employee(nombres, apellidos, cargo, (float) salario));
         new Alert(Alert.AlertType.INFORMATION, "Empleado guardado correctamente.").showAndWait();
         limpiarCampos();
     }
