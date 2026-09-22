@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Region?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.shape.SVGPath?>
+
+<!--
+    Formulario 2: Listado de empleados.
+    Pendiente (controlador): agregar fx:controller, los cellValueFactory de las
+    columnas (names, surnames, position, salary) y las acciones de los botones.
+-->
+<VBox fx:id="employeeListRoot" styleClass="page" stylesheets="@../styles/styles.css"
+      xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml">
+
+    <HBox alignment="CENTER_LEFT" spacing="16">
+        <VBox spacing="4">
+            <HBox alignment="CENTER_LEFT" spacing="10">
+                <Label text="Listado de empleados" styleClass="page-title"/>
+                <Label fx:id="lblCount" text="0" styleClass="badge"/>
+            </HBox>
+            <Label text="Consulta los empleados registrados en el sistema." styleClass="page-subtitle"/>
+        </VBox>
+
+        <Region HBox.hgrow="ALWAYS"/>
+
+        <HBox styleClass="search-box" alignment="CENTER_LEFT" prefWidth="260">
+            <SVGPath styleClass="search-icon" scaleX="0.7" scaleY="0.7"
+                     content="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/>
+            <TextField fx:id="txtSearch" promptText="Buscar empleado..." HBox.hgrow="ALWAYS"/>
+        </HBox>
+    </HBox>
+
+    <TableView fx:id="tblEmployees" VBox.vgrow="ALWAYS">
+        <columnResizePolicy>
+            <TableView fx:constant="CONSTRAINED_RESIZE_POLICY_ALL_COLUMNS"/>
+        </columnResizePolicy>
+        <placeholder>
+            <Label text="Aún no hay empleados registrados."/>
+        </placeholder>
+        <columns>
+            <TableColumn fx:id="colNames" text="NOMBRES" prefWidth="200"/>
+            <TableColumn fx:id="colSurnames" text="APELLIDOS" prefWidth="200"/>
+            <TableColumn fx:id="colPosition" text="CARGO" prefWidth="220"/>
+            <TableColumn fx:id="colSalary" text="SALARIO (C$)" prefWidth="140"/>
+        </columns>
+    </TableView>
+
+    <HBox spacing="10" alignment="CENTER_RIGHT">
+        <Button fx:id="btnDelete" text="Eliminar" styleClass="danger">
+            <graphic>
+                <SVGPath styleClass="btn-icon" scaleX="0.65" scaleY="0.65"
+                         content="M6 19c0 1.1.9 2 2 2h8c1.1 0 2-.9 2-2V7H6v12zM19 4h-3.5l-1-1h-5l-1 1H5v2h14V4z"/>
+            </graphic>
+        </Button>
+        <Button fx:id="btnRefresh" text="Actualizar" styleClass="secondary">
+            <graphic>
+                <SVGPath styleClass="btn-icon" scaleX="0.65" scaleY="0.65"
+                         content="M17.65 6.35C16.2 4.9 14.21 4 12 4c-4.42 0-7.99 3.58-7.99 8s3.57 8 7.99 8c3.73 0 6.84-2.55 7.73-6h-2.08c-.82 2.33-3.04 4-5.65 4-3.31 0-6-2.69-6-6s2.69-6 6-6c1.66 0 3.14.69 4.22 1.78L13 11h7V4l-2.35 2.35z"/>
+            </graphic>
+        </Button>
+    </HBox>
+</VBox>
