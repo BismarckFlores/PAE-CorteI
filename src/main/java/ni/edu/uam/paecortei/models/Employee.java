@@ -1,19 +1,24 @@
 package ni.edu.uam.paecortei.models;
 
-public class Employe {
+public class Employee {
+    private String id;
     private String names;
     private String surnames;
     private String position;
     private float salary;
 
-    public Employe() {
+    public Employee() {
     }
 
-    public Employe(String names, String surnames, String position, float salary) {
+    public Employee(String names, String surnames, String position, float salary) {
         this.names = names;
         this.surnames = surnames;
         this.position = position;
         this.salary = salary;
+    }
+
+    public String getId() {
+        return id;
     }
 
     public String getNames() {
